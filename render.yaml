@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: krishimitra-api
+    runtime: python
+    plan: free
+    region: singapore
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_PATH
+        value: /tmp/krishimitra.db
+      - key: CORS_ORIGINS
+        fromService:
+          type: web
+          name: krishimitra-web
+          envVarKey: RENDER_EXTERNAL_URL
+
+  - type: web
+    name: krishimitra-web
+    runtime: static
+    plan: free
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        fromService:
+          type: web
+          name: krishimitra-api
+          envVarKey: RENDER_EXTERNAL_URL
