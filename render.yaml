@@ -4,6 +4,7 @@ services:
     runtime: python
     plan: free
     region: singapore
+    autoDeployTrigger: 'off'
     rootDir: backend
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
@@ -21,6 +22,7 @@ services:
     name: krishimitra-web
     runtime: static
     plan: free
+    autoDeployTrigger: 'off'
     rootDir: frontend
     buildCommand: npm ci && npm run build
     staticPublishPath: dist
