@@ -21,7 +21,6 @@ services:
   - type: web
     name: krishimitra-web
     runtime: static
-    plan: free
     autoDeployTrigger: 'off'
     rootDir: frontend
     buildCommand: npm ci && npm run build

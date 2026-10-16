@@ -81,7 +81,7 @@ npm run build
 
 ### Render Blueprint
 
-The root `render.yaml` defines a free Render API service and static frontend in Singapore. To publish, use the [Deploy to Render button](https://render.com/deploy?repo=https://github.com/spirals-coder/KrishiMitra) or follow these steps:
+The root `render.yaml` defines a free Render API service and a static frontend. To publish, use the [Deploy to Render button](https://render.com/deploy?repo=https://github.com/spirals-coder/KrishiMitra) or follow these steps:
 
 1. Push this project to a GitHub repository you control. Keep `.env` files and secrets out of the repository; only the `.env.example` files belong in source control.
 2. In Render, choose **New → Blueprint**, connect that repository, and select its branch. Render reads `render.yaml`, builds the frontend and backend, and wires the public API URL into `VITE_API_BASE_URL` and the frontend URL into backend CORS.
